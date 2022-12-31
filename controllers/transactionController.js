@@ -58,6 +58,7 @@ class TransactionController {
                 sold_product_amount: getCategory.sold_product_amount + quantity
             }, { 
                 where:{id : getProduct.CategoryId},
+                hooks: false,
                 returning: true,
                 transaction 
             });
@@ -112,21 +113,6 @@ class TransactionController {
         })
     }
     
-    // static getAll(req, res) {
-        // Category.findAll(
-            // {include: [Product]}
-            // )
-        // .then(result => {
-            // let responses = {
-                // categories: result
-            // }
-            // res.status(200).json(responses);
-        // })
-        // .catch(err => {
-            // res.status(500).json(err);
-        // })
-    // }
-
     static getAll(req, res) {
         const UserId = getPayloadId(req.get('token'));
         TransactionHistory.findAll(

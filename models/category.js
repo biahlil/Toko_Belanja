@@ -29,7 +29,7 @@ module.exports = (sequelize, DataTypes) => {
   }, {
     sequelize,
     hooks: {
-      beforeCreate: (category, options) =>  {
+      beforeValidate: (category, options) =>  {
         category.sold_product_amount = 0; 
       }
     },
